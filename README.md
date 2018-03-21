@@ -171,17 +171,28 @@ app/views/posts/show.html.haml
 ---
 app/views/posts/index.html.haml
 ---
-= link_to "New Post", new_post_path, class: "btn btn-default btn-lg"
-
 - @posts.each do |post|
 		.post
 		%h2.title= link_to post.title, post
 		%p.date
 				Published at
 				= time_ago_in_words(post.created_at)
+
+= link_to "New Post", new_post_path, class: "btn btn-default btn-lg"
+
 ---
 ```
 ![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkk0kxqusj30y40fidhy.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkk0ay5b2j31kw0ewtaj.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkk01jp5jj30q00a6q45.jpg)
-![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkjzg5kqwj31kw0fvach.jpg)
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkl8aldavj313y0icmzg.jpg)
+
+```
+git checkout -b devise
+rails generate devise:install
+rails g devise:views
+rails generate devise user
+rake db:migrate
+```
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklcxgynsj311e0z0aif.jpg)
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklbc044xj31kw0jcage.jpg)
