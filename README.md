@@ -225,7 +225,7 @@ class PostsController < ApplicationController
 	def create
 		@post = current_user.posts.build(post_params)
   ---
-  ```
+```
 ```
 app/models/post.rb
 ---
@@ -266,3 +266,148 @@ rails c
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkmvqe3w1j30xo0dmabi.jpg)
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkmw4eco6j317w0mkjum.jpg)
 ![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkmwj8wt5j30yq0c0t9s.jpg)
+
+```
+git status
+git add .
+git commit -m "add user find post"
+git push origin devise
+```
+![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkmzp4jxvj31gi0qadm7.jpg)
+```
+git checkout -b nav-style
+app/assets/stylesheets/application.css.scss
+---
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+ font-family: 'Lato', sans-serif;
+ background: #EDEFF0;
+}
+
+.wrapper {
+ width: 60%;
+ max-width: 1140px;
+ margin: 0 auto;
+}
+
+.clearfix:before, .clearfix:after {
+ content: " ";
+ display: table;
+}
+
+.clearfix:after {
+ clear: both;
+}
+
+.main_header {
+ width: 100%;
+ margin: 0 auto;
+ background: white;
+ #logo {
+   float: left;
+   a {
+     line-height: 60px;
+     text-transform: uppercase;
+     font-weight: 700;
+     letter-spacing: -1px;
+     font-size: 1.8rem;
+     text-decoration: none;
+     color:#397CAC;
+   }
+ }
+ #buttons {
+   float: right;
+   a {
+     line-height: 60px;
+     background: #397CAC;
+     padding: .5em 1em;
+     border-radius: 0.2em;
+     color: white;
+     text-decoration: none;
+     font-weight: 100;
+   }
+ }
+}
+
+#posts {
+ background: white;
+ padding: 2em 5%;
+ border-radius: .5em;
+ .post {
+   margin: 1em 0;
+   padding: 1em 0;
+   border-bottom: 1px solid #D1d1d1;
+   .title {
+     margin: 0;
+     a {
+       color: #397CAC;
+       text-decoration: none;
+       font-weight: 100;
+       font-size: 1.25rem;
+     }
+   }
+   .date {
+     margin-top: .25rem;
+     font-size: 0.9rem;
+     color: #B2BAC2;
+   }
+ }
+}
+
+.button {
+ color: #397CAC;
+ border: 1px solid #397CAC;
+ padding: .5em 1em;
+ border-radius: 0.2em;
+ text-decoration: none;
+ margin-right: 2%;
+}
+
+#post_content {
+ background: white;
+ padding: 2em 5%;
+ border-radius: .5em;
+ h1 {
+   font-weight: 100;
+   font-size: 2em;
+   color: #397CAC;
+   margin-top: 0;
+ }
+ p {
+   color: #B2BAC2;
+   font-size: 0.9rem;
+   font-weight: 100;
+   line-height: 1.5;
+ }
+ }
+---
+app/views/layouts/application.html.haml
+---
+!!!
+%html
+%head
+	%title XiaoWei Forum
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	%link{ rel: "stylesheet", href: "http://fonts.googleapis.com/css?family=Lato:300,400,700", type: "text/css"}
+	%link{:rel => "stylesheet", :href => "http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"}/
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	= csrf_meta_tags
+%body
+	%header.main_header.clearfix
+		.wrapper
+			#logo
+				%p= link_to "XiaoWei Forum", root_path
+			#buttons
+				- if user_signed_in?
+					= link_to "New Post", new_post_path
+				- else
+					= link_to "Sign Up", new_user_registration_path
+					= link_to "Sign In", new_user_session_path
+	.wrapper
+		%p.notice= notice
+		%p.alert= alert
+	.wrapper
+		= yield
+---
