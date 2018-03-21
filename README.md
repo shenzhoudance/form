@@ -1,24 +1,13 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 才华横溢 form 案例教学 10
+```
+cd workspace
+rails new form
+cd form
+git init
+git status
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/shenzhoudance/form.git
+git push -u origin master
+```
+![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpk8aumm6kj31ik0pcadx.jpg)
