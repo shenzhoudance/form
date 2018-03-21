@@ -204,3 +204,65 @@ http://localhost:3000/users/sign_up
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklcxgynsj311e0z0aif.jpg)
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklbc044xj31kw0jcage.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpklnfb3q3j31ew0qotar.jpg)
+
+```
+app/controllers/posts_controller.rb
+---
+class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+	def index
+		@posts = Post.all.order("created_at DESC")
+	end
+
+	def show
+	end
+
+	def new
+		@post = current_user.posts.build
+	end
+
+	def create
+		@post = current_user.posts.build(post_params)
+  ---
+  ```
+```
+app/models/post.rb
+---
+class Post < ApplicationRecord
+  belongs_to :user
+end
+---
+app/models/user.rb
+---
+class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+   has_many :posts
+end
+
+```
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkmg6uuhej31kw0i777a.jpg)
+
+```
+rails g migration add_user_id_to_posts user_id:integer
+rake db:migrate
+```
+![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpkmjn1tl6j31kw0hd40g.jpg)
+
+```
+rails c
+2.3.1 :001 > @post = Post.first
+2.3.1 :002 > @post = Post.last
+2.3.1 :003 > @post.user_id = 1
+2.3.1 :004 > @post.save
+2.3.1 :005 > @post = Post.find(3)
+2.3.1 :006 > @post.user_id = 1
+2.3.1 :007 > @post.save
+2.3.1 :007 > exit
+---
+```
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkmviha8ej31ji0q27ch.jpg)
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkmvqe3w1j30xo0dmabi.jpg)
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkmw4eco6j317w0mkjum.jpg)
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkmwj8wt5j30yq0c0t9s.jpg)
