@@ -193,6 +193,14 @@ rails generate devise:install
 rails g devise:views
 rails generate devise user
 rake db:migrate
+---
+git status
+git commit -m "add devise user"
+git push origin devise
+---
+rails server
+http://localhost:3000/users/sign_up
 ```
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklcxgynsj311e0z0aif.jpg)
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpklbc044xj31kw0jcage.jpg)
+![image](https://ws2.sinaimg.cn/large/006tKfTcgy1fpklnfb3q3j31ew0qotar.jpg)
