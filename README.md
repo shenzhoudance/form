@@ -49,3 +49,13 @@ rails server
 ```
 ![image](https://ws3.sinaimg.cn/large/006tKfTcgy1fpki7x4wn1j30vi09mdhv.jpg)
 ![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpki3pn7mdj30qe08uwf7.jpg)
+```
+git status
+git add .
+git commit -m "add post model & controller & index"
+git push origin posts
+```
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkif8cwmjj31kw0ixq6y.jpg)
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpkien0818j317s0n2n08.jpg)
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkie970v4j31920p4aey.jpg)
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpkidszzokj31ak0pkq8n.jpg)
