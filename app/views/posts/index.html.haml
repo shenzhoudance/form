@@ -1,9 +1,7 @@
-- @posts.each do |post|
+#posts
+	- @posts.each do |post|
 		.post
-		%h2.title= link_to post.title, post
-		%p.date
+			%h2.title= link_to post.title, post
+			%p.date
 				Published at
 				= time_ago_in_words(post.created_at)
-
-
-= link_to "New Post", new_post_path, class: "btn btn-default btn-lg"
