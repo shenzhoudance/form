@@ -411,3 +411,5 @@ app/views/layouts/application.html.haml
 	.wrapper
 		= yield
 ---
+```
+![image](https://ws3.sinaimg.cn/large/006tKfTcly1fplceccpcej31dm0jw415.jpg)
