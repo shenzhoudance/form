@@ -413,3 +413,53 @@ app/views/layouts/application.html.haml
 ---
 ```
 ![image](https://ws3.sinaimg.cn/large/006tKfTcly1fplceccpcej31dm0jw415.jpg)
+
+```
+git checkout -b model_comment
+rails g model Comment comment:text post:references user:references
+rake db:migrate
+rails g controller Comments
+```
+![image](https://ws1.sinaimg.cn/large/006tKfTcgy1fpldei55n7j31j60g0dk9.jpg)
+
+```
+app/models/post.rb
+---
+class Post < ApplicationRecord
+  belongs_to :user
+  has_many :comments
+end
+---
+app/models/user.rb
+---
+class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+   has_many :posts
+   has_many :comments
+end
+---
+app/controllers/comments_controller.rb
+```
+
+
+```
+rails c
+Comment
+Comment.connection
+Comment
+Comment.last
+Comment.last
+@comment.user_id = 1
+@comment = save
+@comment
+Comment.last
+User
+Post
+@comment = comment.all
+@comment.destroy
+Comment.all
+Comment.destroy_all
+```
+![image](https://ws1.sinaimg.cn/large/006tKfTcly1fplpz0h3ehj31d60q6mz4.jpg)
+![image](https://ws1.sinaimg.cn/large/006tKfTcly1fplpyqi4muj318q0xgwh2.jpg)
